@@ -11,12 +11,14 @@ const BlurBg = ({ isBlur }: { isBlur: boolean }) => {
   const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
 
   const animatedProps = useAnimatedProps(() => {
-    const intensity = isBlur ? withTiming(100) : withTiming(0);
+    const intensity = isBlur
+      ? withTiming(100, { duration: 500 })
+      : withTiming(0, { duration: 500 });
 
     return {
       intensity,
     };
-  }, [isBlur]);
+  }, [isBlur, colorScheme]);
 
   return (
     <AnimatedBlurView
