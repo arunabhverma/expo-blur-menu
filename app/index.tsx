@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { useTheme } from "@react-navigation/native";
@@ -10,7 +17,7 @@ const Main = () => {
   const theme = useTheme();
   const { top } = useSafeAreaInsets();
   const headerHeight = useHeaderHeight();
-  const topPadding = headerHeight + top;
+  const topPadding = headerHeight + Platform.select({ android: 0, ios: top });
 
   const [isVisible, setIsVisible] = useState<boolean>(false);
   return (
@@ -36,7 +43,7 @@ const Main = () => {
         </Text>
         <Image
           source={{
-            uri: "https://img.freepik.com/free-photo/low-angle-shot-small-river-full-rocks-middle-forest_181624-5528.jpg?t=st=1722101226~exp=1722104826~hmac=1cbd9c279e65bb2ccb8100b047e17395e4396e5568288bd92b6277dbbc73e242&w=2000",
+            uri: "https://img.freepik.com/free-photo/low-angle-shot-small-river-full-rocks-middle-forest_181624-5528.jpg",
           }}
           style={styles.banner}
         />

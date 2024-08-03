@@ -22,6 +22,7 @@ const BlurBg = ({ isBlur }: { isBlur: boolean }) => {
 
   return (
     <AnimatedBlurView
+      experimentalBlurMethod={"dimezisBlurView"}
       pointerEvents={!isBlur ? "none" : "auto"}
       tint={colorScheme}
       animatedProps={animatedProps}
